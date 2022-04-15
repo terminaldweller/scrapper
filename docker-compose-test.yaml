@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  scrapper:
+    image: scrapper
+    build:
+      context: .
+    networks:
+      - scrappernet
+    ports:
+      - "19010:80"
+    environment:
+      - SERVER_DEPLOYMENT_TYPE=test
+    cap_drop:
+      - ALL
+    entrypoint: ["/docker-entrypoint.sh"]
+networks:
+  scrappernet:
